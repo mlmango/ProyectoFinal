@@ -4,7 +4,7 @@ from django import forms
 
 class formulario_Autores(forms.Form):
     nombre=forms.CharField(max_length=100)
-    username=forms.CharField(max_length=100)
+    username=forms.CharField(max_length=50)
     email=forms.EmailField()
 
 class formulario_Articulos(forms.Form):
@@ -12,7 +12,7 @@ class formulario_Articulos(forms.Form):
     texto=forms.CharField(max_length=1000)
     articulo_nro=forms.IntegerField()
     username_autor=forms.CharField(max_length=100)
-    fecha_de_publicacion=forms.DateField(null=True)
+    fecha_de_publicacion=forms.DateField()
 
 class formulario_Secciones(forms.Form):
-    nombre=forms.CharField()
+    nombre=forms.CharField(max_length=30)

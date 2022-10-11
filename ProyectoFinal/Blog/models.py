@@ -23,7 +23,7 @@ class Articulos(models.Model):
     texto = models.CharField(max_length=1000)
     articulo_nro = models.IntegerField()
     username_autor = models.CharField(max_length=100)
-    fecha_de_publicacion = models.DateField(null=True)
+    fecha_de_publicacion = models.DateField()
 
     def __str__(self):
         return (f"Articulo {self.titulo}, de {self.username_autor}, con fecha de publicación {self.fecha_de_publicacion}")
