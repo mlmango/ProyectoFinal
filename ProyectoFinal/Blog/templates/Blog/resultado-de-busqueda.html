@@ -1,0 +1,18 @@
+
+{% extends "Blog/padre.html" %}
+
+{% load static %}
+
+{% block contenido_que_cambia %}
+
+<h4> Se encontraron los siguientes resultados:  </h4>
+
+<ul>
+    {% for resultados in resultados %}
+        <li>"{{resultados.titulo}}" de {{resultados.username_autor}} publicado en {{resultados.fecha_de_publicacion}}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
+

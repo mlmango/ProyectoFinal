@@ -5,6 +5,18 @@ from Blog.models import Articulos, Autores, Secciones
 
 # Create your views here.
 
+def busqueda_bd(request):
+    if request.method == 'GET':
+        return render(request, "blog/form-de-busqueda.html")
+    
+    if request.method == 'POST':
+        #breakpoint()
+        dato_ingresado = request.POST["titulo"]
+        resultado_busqueda = Articulos.objects.filter(titulo=dato_ingresado)
+        contexto = {"resultados": resultado_busqueda}
+        return render(request, "blog/resultado-de-busqueda.html", context=contexto)
+
+
 def mostrar_inicio(request):
     return render(request, "blog/inicio.html")
 

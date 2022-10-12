@@ -1,0 +1,14 @@
+{% extends "Blog/padre.html" %}
+
+{% load static %}
+
+{% block contenido_que_cambia %}
+
+<h4> Por favor, ingresá los títulos de los artículos que desees buscar: </h4>
+
+<form action="/blog/busqueda-art/" method="POST">{% csrf_token %}
+    <p><input type="text" name="titulo" id="titulo"></p>
+    <input type="submit" value="Buscar">
+</form>
+
+{% endblock %}
