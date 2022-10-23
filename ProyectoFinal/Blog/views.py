@@ -97,3 +97,6 @@ def procesar_formulario_seccion(request):
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-seccion.html", context=contexto)
+
+def mapa_del_sitio(request):
+    return render(request, "blog/map.html")
