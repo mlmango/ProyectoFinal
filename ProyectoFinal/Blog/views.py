@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Blog.forms import formulario_Articulos , formulario_Autores , formulario_Secciones
 from Blog.models import Articulos, Autores, Secciones
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -101,9 +102,7 @@ def procesar_formulario_seccion(request):
 def mapa_del_sitio(request):
     return render(request, "blog/map.html")
 
-def listar_articulos(request):
-    todos_los_articulos = Articulos.objects.all()
 
-    contexto = {"articulos_encontrados": todos_los_articulos}
-
-    return render(request, "blog/pages.html", context=contexto)
+class ArticulosList(ListView):
+    model = Articulos
+    template_name = "blog/pages.html"

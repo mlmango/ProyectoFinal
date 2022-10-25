@@ -2,14 +2,22 @@
 
 {% block contenido_que_cambia %}
 
-<br>
-{% for articulo in articulos_encontrados %}
-Título: {{articulo.titulo}} <br>
-Autor: {{articulo.username_autor}} <br>
-Fecha de Publicación: {{articulo.fecha_de_publicacion}} <br>
-<br>
-<br>
-{% endfor %}
+<h3>Articulos del Blog</h3>
+
+
+
+<ul>
+    {% for articulo in object_list %}
+    <li>
+        <p> Título: {{articulo.titulo}}</p>
+        <p> Autor: {{articulo.username_autor}}</p>
+        <p> Fecha de Publicación: {{articulo.fecha_de_publicacion}}</p>
+
+    </li>
+    {% endfor %}
+
+</ul>
+
 
 {% endblock %}
 
