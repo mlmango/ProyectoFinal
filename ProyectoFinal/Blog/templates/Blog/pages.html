@@ -1,0 +1,18 @@
+{% extends "Blog/padre.html" %}
+
+{% block contenido_que_cambia %}
+
+<br>
+{% for articulo in articulos_encontrados %}
+Título: {{articulo.titulo}} <br>
+Autor: {{articulo.username_autor}} <br>
+Fecha de Publicación: {{articulo.fecha_de_publicacion}} <br>
+<br>
+<br>
+{% endfor %}
+
+{% endblock %}
+
+<!--Falta agregar el leer más-->
+
+

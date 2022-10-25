@@ -100,3 +100,10 @@ def procesar_formulario_seccion(request):
 
 def mapa_del_sitio(request):
     return render(request, "blog/map.html")
+
+def listar_articulos(request):
+    todos_los_articulos = Articulos.objects.all()
+
+    contexto = {"articulos_encontrados": todos_los_articulos}
+
+    return render(request, "blog/pages.html", context=contexto)
