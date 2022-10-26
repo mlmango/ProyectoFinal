@@ -5,6 +5,9 @@ from Blog.views import ArticulosList
 urlpatterns = [
     path("inicio/", mostrar_inicio),
     path("formulario-autor/", procesar_formulario_autor),
+    path("formulario-autor-2/", procesar_formulario_autor),
+    path("formulario-articulo-2/", procesar_formulario_articulo),
+    path("formulario-seccion-2/", procesar_formulario_seccion),
     path("formulario-articulo/", procesar_formulario_articulo),
     path("formulario-seccion/", procesar_formulario_seccion),
     path("busqueda-art/", busqueda_bd),

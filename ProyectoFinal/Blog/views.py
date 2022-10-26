@@ -10,12 +10,20 @@ def busqueda_bd(request):
     if request.method == 'GET':
         return render(request, "blog/form-de-busqueda.html")
     
-    if request.method == 'POST':
+    if  request.method == 'POST':
         #breakpoint()
         dato_ingresado = request.POST["titulo"]
         resultado_busqueda = Articulos.objects.filter(titulo=dato_ingresado)
         contexto = {"resultados": resultado_busqueda}
         return render(request, "blog/resultado-de-busqueda.html", context=contexto)
+
+# def busqueda_bd(request):
+#     if request.GET["titulo"]:
+
+#         dato_ingresado = request.GET['titulo']
+#         Articulos = Articulos.objects.filter(titulo__icontains=dato_ingresado)
+#         contexto = {"resultados": resultado_busqueda}
+#         return render(request, "blog/resultado-de-busqueda.html", context=contexto)
 
 
 def mostrar_inicio(request):
@@ -42,7 +50,7 @@ def procesar_formulario_autor(request):
             
             mi_formulario = formulario_Autores()
             contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-autor.html", context=contexto)
+            return render(request, "blog/formulario-autor-2.html", context=contexto)
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-autor.html", context=contexto)
@@ -70,7 +78,7 @@ def procesar_formulario_articulo(request):
             
             mi_formulario = formulario_Articulos()
             contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-articulo.html", context=contexto)
+            return render(request, "blog/formulario-articulo-2.html", context=contexto)
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-articulo.html", context=contexto)
@@ -94,7 +102,7 @@ def procesar_formulario_seccion(request):
             
             mi_formulario = formulario_Secciones()
             contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-seccion.html", context=contexto)
+            return render(request, "blog/formulario-seccion-2.html", context=contexto)
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-seccion.html", context=contexto)
