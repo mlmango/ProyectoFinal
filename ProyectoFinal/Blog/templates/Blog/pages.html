@@ -13,6 +13,7 @@
         <p> Autor: {{articulo.username_autor}}</p>
         <p> Fecha de Publicación: {{articulo.fecha_de_publicacion}}</p>
         <p> Categoría: {{articulo.sections}}</p>
+        <a href="{% url 'ArticuloDetail' articulo.id %}"> Leer más... </a>
 
     </li>
     {% endfor %}

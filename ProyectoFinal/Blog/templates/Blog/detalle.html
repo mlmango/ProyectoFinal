@@ -1,0 +1,15 @@
+{% extends "Blog/padre.html" %}
+
+{% block contenido_que_cambia %}
+
+<h3>Articulo</h3>  
+<p>Nombre del articulo: <strong> {{ articulos.titulo }} </strong> </p>
+<p> Autor: {{articulos.username_autor}}</p>
+<p> Fecha de Publicación: {{articulos.fecha_de_publicacion}}</p>
+<p><i> {{articulos.texto}}</i></p>
+
+<p>
+    <a href="{% url 'ArticulosList' %}"> Todos los Artículos </a>
+</p>
+
+{% endblock %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Blog.forms import formulario_Articulos , formulario_Autores , formulario_Secciones
 from Blog.models import Articulos, Autores, Secciones
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 
 
 # Create your views here.
@@ -108,3 +109,8 @@ class ArticulosList(ListView):
 
 def about_us(request):
     return render(request, "blog/about_us.html")
+
+
+class ArticuloDetail(DetailView):
+    model = Articulos
+    template_name = "blog/detalle.html"

@@ -1,6 +1,6 @@
 from django.urls import path
 from Blog.views import busqueda_bd, mostrar_inicio, procesar_formulario_articulo, procesar_formulario_autor, procesar_formulario_seccion, mapa_del_sitio, about_us
-from Blog.views import ArticulosList
+from Blog.views import ArticulosList, ArticuloDetail
 
 urlpatterns = [
     path("inicio/", mostrar_inicio),
@@ -14,6 +14,7 @@ urlpatterns = [
     path("map/", mapa_del_sitio),
     path("pages/", ArticulosList.as_view(), name="ArticulosList"),
     path("aboutus/", about_us),
+    path("pages/<pk>/", ArticuloDetail.as_view(), name="ArticuloDetail"),
     
 
 
