@@ -3,6 +3,15 @@ from django.db import models
 # Create your models here.
 
 
+class Secciones(models.Model):
+    class Meta:
+        verbose_name_plural = "Secciones"
+
+    categoria = models.CharField(max_length=100)    
+    def __str__(self):
+        return self.categoria
+
+
 class Autores(models.Model):
     class Meta:
         verbose_name_plural = "Autores"
@@ -28,11 +37,3 @@ class Articulos(models.Model):
     def __str__(self):
         return self.titulo
 
-class Secciones(models.Model):
-    class Meta:
-        verbose_name_plural = "Secciones"
-
-    categoria = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.nombre

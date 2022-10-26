@@ -13,18 +13,9 @@ def busqueda_bd(request):
     if  request.method == 'POST':
         #breakpoint()
         dato_ingresado = request.POST["titulo"]
-        resultado_busqueda = Articulos.objects.filter(titulo=dato_ingresado)
+        resultado_busqueda = Articulos.objects.filter(titulo__icontains=dato_ingresado)
         contexto = {"resultados": resultado_busqueda}
         return render(request, "blog/resultado-de-busqueda.html", context=contexto)
-
-# def busqueda_bd(request):
-#     if request.GET["titulo"]:
-
-#         dato_ingresado = request.GET['titulo']
-#         Articulos = Articulos.objects.filter(titulo__icontains=dato_ingresado)
-#         contexto = {"resultados": resultado_busqueda}
-#         return render(request, "blog/resultado-de-busqueda.html", context=contexto)
-
 
 def mostrar_inicio(request):
     return render(request, "blog/inicio.html")
@@ -96,7 +87,7 @@ def procesar_formulario_seccion(request):
         if mi_formulario.is_valid():
             datos_ingresados_por_usuario = mi_formulario.cleaned_data
             nuevo_modelo = Secciones(
-                nombre=datos_ingresados_por_usuario["nombre"]  
+                categoria=datos_ingresados_por_usuario["categoria"]  
             )
             nuevo_modelo.save()
             
@@ -114,3 +105,6 @@ def mapa_del_sitio(request):
 class ArticulosList(ListView):
     model = Articulos
     template_name = "blog/pages.html"
+
+def about_us(request):
+    return render(request, "blog/about_us.html")
