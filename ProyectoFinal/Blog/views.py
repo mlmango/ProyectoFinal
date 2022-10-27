@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from Blog.forms import formulario_Articulos , formulario_Autores , formulario_Secciones
 from Blog.models import Articulos, Autores, Secciones
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -114,3 +113,15 @@ def about_us(request):
 class ArticuloDetail(DetailView):
     model = Articulos
     template_name = "blog/detalle.html"
+
+class ArticuloUpdateView(UpdateView):
+    model = Articulos
+    success_url = "/blog/pages/"
+    fields = ["titulo", "texto", "articulo_nro", "username_autor", "fecha_de_publicacion"]
+
+
+class ArticuloDelete(DeleteView):
+
+    model = Articulos
+    success_url = "/blog/pages/"
+
