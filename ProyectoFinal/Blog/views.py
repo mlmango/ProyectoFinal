@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Blog.forms import formulario_Articulos , formulario_Autores , formulario_Secciones
 from Blog.models import Articulos, Autores, Secciones
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
@@ -125,3 +126,8 @@ class ArticuloDelete(DeleteView):
     model = Articulos
     success_url = "/blog/pages/"
 
+class MyLogin(LoginView):
+    template_name = "blog/login.html"
+
+class MyLogout(LoginView):
+    template_name = "blog/logout.html"

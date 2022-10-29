@@ -1,9 +1,9 @@
 from django.urls import path
 from Blog.views import busqueda_bd, mostrar_inicio, procesar_formulario_articulo, procesar_formulario_autor, procesar_formulario_seccion, mapa_del_sitio, about_us
-from Blog.views import ArticulosList, ArticuloDetail, ArticuloUpdateView, ArticuloDelete
+from Blog.views import ArticulosList, ArticuloDetail, ArticuloUpdateView, ArticuloDelete, MyLogin, MyLogout
 
 urlpatterns = [
-    path("inicio/", mostrar_inicio),
+    path("", mostrar_inicio),
     path("formulario-autor/", procesar_formulario_autor),
     path("formulario-autor-2/", procesar_formulario_autor),
     path("formulario-articulo-2/", procesar_formulario_articulo),
@@ -17,6 +17,8 @@ urlpatterns = [
     path("pages/<pk>/", ArticuloDetail.as_view(), name="ArticuloDetail"),
     path("editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
     path("borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
+    path("login/", MyLogin.as_view(), name="Login"),
+    path("logout/", MyLogout.as_view(), name="Logout"),
     
 
 
