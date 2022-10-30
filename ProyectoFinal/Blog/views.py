@@ -2,8 +2,11 @@ from django.shortcuts import render
 from Blog.forms import formulario_Articulos , formulario_Autores , formulario_Secciones
 from Blog.models import Articulos, Autores, Secciones
 from django.views.generic import ListView, DetailView, UpdateView, DeleteView
-from django.contrib.auth.views import LoginView
-
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import authenticate
 
 # Create your views here.
 
@@ -108,7 +111,7 @@ class ArticulosList(ListView):
     template_name = "blog/pages.html"
 
 def about_us(request):
-    return render(request, "blog/about_us.html")
+    return render(request, "blog/about.html")
 
 
 class ArticuloDetail(DetailView):
@@ -129,5 +132,24 @@ class ArticuloDelete(DeleteView):
 class MyLogin(LoginView):
     template_name = "blog/login.html"
 
-class MyLogout(LoginView):
+class MyLogout(LogoutView):
     template_name = "blog/logout.html"
+
+
+# @login_required
+# def mostrar_inicio(request):
+#     return render(request, "Blog/inicio.html")
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username_capturado = form.cleaned_data['username']
+            form.save()
+        
+            return render(request, "Blog/inicio.html", {"mensaje": "Usuario Creado :)"})
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, "Blog/registro.html", {"form":form})

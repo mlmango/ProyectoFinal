@@ -9,14 +9,14 @@
 <body>
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/">Inicio</a>  
+            <a href="http://127.0.0.1:8000/blog/">Inicio</a>  
             <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-articulo/">Nuevo Articulo</a>
             <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-autor/">Nuevo Autor</a>
             <!-- <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-seccion/">Alta de Categorias</a> -->
             <a class="navbar-brand" href="http://127.0.0.1:8000/blog/busqueda-art/">Buscar Artículo</a>
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/pages/">Pages</a>   
-            <a class="btn btn-primary" href="#signup">Registrarse</a>
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/aboutus/">About us</a>
+            <a href="{% url 'ArticulosList' %}">Pages</a>   
+            <a href="{% url 'Register' %}">Registrarse</a>
+            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/about/">About us</a>
             <a href="{% url 'Login' %}">Login</a>
             <a href="{% url 'Logout' %}">Logout</a>   
             
