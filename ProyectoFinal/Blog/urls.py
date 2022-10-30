@@ -5,7 +5,6 @@ from Blog.views import (
     procesar_formulario_articulo,
     procesar_formulario_autor,
     procesar_formulario_seccion,
-    mapa_del_sitio,
     about_us,
     register,
     ArticulosList,

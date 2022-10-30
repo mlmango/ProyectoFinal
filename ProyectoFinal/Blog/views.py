@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 
 # Create your views here.
 
+@login_required
 def busqueda_bd(request):
     if request.method == 'GET':
         return render(request, "blog/form-de-busqueda.html")
@@ -24,7 +25,7 @@ def busqueda_bd(request):
 def mostrar_inicio(request):
     return render(request, "blog/inicio.html")
 
-
+@login_required
 def procesar_formulario_autor(request):
     if request.method == 'GET':
         mi_formulario = formulario_Autores()
@@ -50,7 +51,7 @@ def procesar_formulario_autor(request):
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-autor.html", context=contexto)
 
-
+@login_required
 def procesar_formulario_articulo(request):
     if request.method == 'GET':
         mi_formulario = formulario_Articulos()
@@ -106,7 +107,7 @@ def mapa_del_sitio(request):
     return render(request, "blog/map.html")
 
 
-class ArticulosList(ListView):
+class ArticulosList(ListView, LoginRequiredMixin):
     model = Articulos
     template_name = "blog/pages.html"
 
@@ -114,17 +115,17 @@ def about_us(request):
     return render(request, "blog/about.html")
 
 
-class ArticuloDetail(DetailView):
+class ArticuloDetail(DetailView, LoginRequiredMixin):
     model = Articulos
     template_name = "blog/detalle.html"
 
-class ArticuloUpdateView(UpdateView):
+class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
     model = Articulos
     success_url = "/blog/pages/"
     fields = ["titulo", "texto", "articulo_nro", "username_autor", "fecha_de_publicacion"]
 
 
-class ArticuloDelete(DeleteView):
+class ArticuloDelete(DeleteView, LoginRequiredMixin):
 
     model = Articulos
     success_url = "/blog/pages/"
@@ -132,7 +133,7 @@ class ArticuloDelete(DeleteView):
 class MyLogin(LoginView):
     template_name = "blog/login.html"
 
-class MyLogout(LogoutView):
+class MyLogout(LogoutView, LoginRequiredMixin):
     template_name = "blog/logout.html"
 
 
@@ -147,7 +148,7 @@ def register(request):
             username_capturado = form.cleaned_data['username']
             form.save()
         
-            return render(request, "Blog/inicio.html", {"mensaje": "Usuario Creado :)"})
+            return render(request, "Blog/inicio.html", {"mensaje": f"Usuario: {username_capturado}."})
 
     else:
         form = UserCreationForm()
