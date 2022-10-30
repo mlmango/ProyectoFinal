@@ -9,12 +9,12 @@
 <body>
     <nav class="navbar navbar-light bg-light static-top">
         <div class="container">
-            <a href="http://127.0.0.1:8000/blog/">Inicio</a>  
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-articulo/">Nuevo Articulo</a>
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-autor/">Nuevo Autor</a>
+            <a href="{% url 'Inicio' %}">Inicio</a>  
+            <a href="{% url 'Crear Artículo' %}">Nuevo Articulo</a>
+            <a href="{% url 'Crear Autor' %}">Nuevo Autor</a>
             <!-- <a class="navbar-brand" href="http://127.0.0.1:8000/blog/formulario-seccion/">Alta de Categorias</a> -->
-            <a class="navbar-brand" href="http://127.0.0.1:8000/blog/busqueda-art/">Buscar Artículo</a>
-            <a href="{% url 'ArticulosList' %}">Pages</a>   
+            <a href="{% url 'Buscar Artículo' %}">Buscar Artículo</a>
+            <a href="{% url 'Artículos' %}">Artículos</a>   
             <a href="{% url 'Register' %}">Registrarse</a>
             <a class="navbar-brand" href="http://127.0.0.1:8000/blog/about/">About us</a>
             {% if not request.user.is_authenticated %}

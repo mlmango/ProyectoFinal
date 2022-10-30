@@ -16,15 +16,15 @@ from Blog.views import (
 )
 
 urlpatterns = [
-    path("", mostrar_inicio),
-    path("formulario-autor/", procesar_formulario_autor),
+    path("", mostrar_inicio, name="Inicio"),
+    path("formulario-autor/", procesar_formulario_autor, name="Crear Autor"),
     path("formulario-autor-2/", procesar_formulario_autor),
     path("formulario-articulo-2/", procesar_formulario_articulo),
     path("formulario-seccion-2/", procesar_formulario_seccion),
-    path("formulario-articulo/", procesar_formulario_articulo),
+    path("formulario-articulo/", procesar_formulario_articulo, name="Crear Artículo"),
     path("formulario-seccion/", procesar_formulario_seccion),
-    path("busqueda-art/", busqueda_bd),
-    path("pages/", ArticulosList.as_view(), name="ArticulosList"),
+    path("busqueda-art/", busqueda_bd, name="Buscar Artículo"),
+    path("pages/", ArticulosList.as_view(), name="Artículos"),
     path("about/", about_us),
     path("pages/<pk>/", ArticuloDetail.as_view(), name="ArticuloDetail"),
     path("editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
