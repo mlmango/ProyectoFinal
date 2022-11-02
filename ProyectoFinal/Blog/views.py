@@ -147,7 +147,7 @@ def register(request):
             username_capturado = form.cleaned_data['username']
             form.save()
         
-            return render(request, "Blog/inicio.html", {"mensaje": f"Usuario: {username_capturado}."})
+            return render(request, "Blog/inicio.html", {"mensaje": f"{username_capturado}"})
 
     else:
         form = UserCreationForm()
