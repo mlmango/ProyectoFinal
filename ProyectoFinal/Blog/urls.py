@@ -1,4 +1,6 @@
 from django.urls import path
+from re import template
+from multiprocessing import context
 from Blog.views import (
     busqueda_bd,
     mostrar_inicio,
@@ -12,7 +14,9 @@ from Blog.views import (
     ArticuloUpdateView,
     ArticuloDelete,
     MyLogin,
-    MyLogout
+    MyLogout,
+    agregar_avatar,
+    editar_perfil
 )
 
 urlpatterns = [
@@ -32,7 +36,9 @@ urlpatterns = [
     path("login/", MyLogin.as_view(), name="Login"),
     path("logout/", MyLogout.as_view(), name="Logout"),
     path("register/", register, name="Register"),
-    
+    path("editperfil/", editar_perfil, name="EditarPerfil"),
+    path("cambiarAvatar/", agregar_avatar, name="AgregarAvatar"),    
  
 
 ]
+

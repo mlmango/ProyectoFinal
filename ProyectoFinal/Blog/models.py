@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -35,5 +36,8 @@ class Articulos(models.Model):
     fecha_de_publicacion = models.DateField(null=True)
 
     def __str__(self):
-        return self.titulo
+        return f"{self.titulo} de {self.username_autor}"
 
+class Avatar(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to="avatares", null=True, blank=True)

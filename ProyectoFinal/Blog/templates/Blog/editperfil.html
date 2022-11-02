@@ -1,0 +1,12 @@
+{% extends "Blog/padre.html" %}
+
+{% block contenido_que_cambia %}
+
+<h3>Editar perfil de {{ user }}</h3>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Aceptar"/>
+</form>
+
+{% endblock %}
