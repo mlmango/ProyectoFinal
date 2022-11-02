@@ -21,13 +21,13 @@
                 <a href="{% url 'Register' %}">Registrarse</a>
             {% endif %}
             {% if request.user.is_authenticated %}
-                {% if avatar %}
-                    <img height="45px" src="{{ avatar }}"/>
-                {% endif %}
                 <a href="{% url 'EditarPerfil' %}">Editar Perfil</a>
                 <a href="{% url 'AgregarAvatar' %}">Agregar Avatar</a>
                 <a href="{% url 'Logout' %}">Logout</a>   
-                Hola, {{user.username}}!
+                {% if avatar %}
+                    <img height="45px" src="{{ avatar }}"/>
+                {% endif %}
+                <p>Hola, {{user.username}}!</p>
             {% endif %}
             
     </div>

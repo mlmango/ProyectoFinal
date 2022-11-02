@@ -32,6 +32,13 @@ def busqueda_bd(request):
 
 # @login_required
 def mostrar_inicio(request):
+    # avatar = Avatar.objects.filter(user=request.user).first()
+    # if avatar is not None:
+    #     contexto = {"avatar": avatar.avatar.url}
+    # else:
+    #     contexto = {}
+
+    # return render(request, "blog/inicio.html", contexto)
     return render(request, "blog/inicio.html")
 
 @login_required
