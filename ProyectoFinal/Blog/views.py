@@ -22,6 +22,7 @@ def busqueda_bd(request):
         contexto = {"resultados": resultado_busqueda}
         return render(request, "blog/resultado-de-busqueda.html", context=contexto)
 
+@login_required
 def mostrar_inicio(request):
     return render(request, "blog/inicio.html")
 
@@ -107,32 +108,33 @@ def mapa_del_sitio(request):
     return render(request, "blog/map.html")
 
 
-class ArticulosList(ListView, LoginRequiredMixin):
+class ArticulosList(LoginRequiredMixin, ListView):
     model = Articulos
     template_name = "blog/pages.html"
 
+@login_required
 def about_us(request):
     return render(request, "blog/about.html")
 
 
-class ArticuloDetail(DetailView, LoginRequiredMixin):
+class ArticuloDetail(LoginRequiredMixin, DetailView):
     model = Articulos
     template_name = "blog/detalle.html"
 
-class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
+class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
     model = Articulos
     success_url = "/blog/pages/"
     fields = ["titulo", "texto", "articulo_nro", "username_autor", "fecha_de_publicacion"]
 
 
-class ArticuloDelete(DeleteView, LoginRequiredMixin):
+class ArticuloDelete(LoginRequiredMixin, DeleteView):
     model = Articulos
     success_url = "/blog/pages/"
 
 class MyLogin(LoginView):
     template_name = "blog/login.html"
 
-class MyLogout(LogoutView, LoginRequiredMixin):
+class MyLogout(LoginRequiredMixin, LogoutView):
     template_name = "blog/logout.html"
 
 
