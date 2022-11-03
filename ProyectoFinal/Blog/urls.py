@@ -16,7 +16,7 @@ from Blog.views import (
     MyLogin,
     MyLogout,
     agregar_avatar,
-    editar_perfil
+    editar_perfil,
 )
 
 urlpatterns = [
@@ -37,8 +37,5 @@ urlpatterns = [
     path("logout/", MyLogout.as_view(), name="Logout"),
     path("register/", register, name="Register"),
     path("editperfil/", editar_perfil, name="EditarPerfil"),
-    path("cambiarAvatar/", agregar_avatar, name="AgregarAvatar"),    
- 
-
+    path("cambiarAvatar/", agregar_avatar, name="AgregarAvatar"),
 ]
-

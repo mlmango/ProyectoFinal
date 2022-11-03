@@ -8,7 +8,8 @@ class Secciones(models.Model):
     class Meta:
         verbose_name_plural = "Secciones"
 
-    categoria = models.CharField(max_length=100)    
+    categoria = models.CharField(max_length=100)
+
     def __str__(self):
         return self.categoria
 
@@ -37,6 +38,7 @@ class Articulos(models.Model):
 
     def __str__(self):
         return f"{self.titulo} de {self.username_autor}"
+
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

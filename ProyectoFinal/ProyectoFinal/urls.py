@@ -19,11 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-#from ProyectoFinal.views import saludo
+# from ProyectoFinal.views import saludo
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("blog/", include("Blog.urls"))
+    path("blog/", include("Blog.urls")),
+    # path("msn/", include("Mensajes.urls"))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
