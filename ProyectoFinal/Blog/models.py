@@ -31,8 +31,10 @@ class Articulos(models.Model):
         verbose_name_plural = "Articulos"
 
     titulo = models.CharField(max_length=100)
+    subtitulo = models.CharField(max_length=100, null=True, blank=True)
     texto = models.CharField(max_length=1000)
     articulo_nro = models.IntegerField()
+    imagen_de_portada = models.ImageField(upload_to="covers", null=True, blank=True)
     username_autor = models.CharField(max_length=100)
     fecha_de_publicacion = models.DateField(null=True)
 

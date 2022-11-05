@@ -23,7 +23,9 @@ class formulario_Articulos(forms.Form):
         (LIFESTYLE, "Estilo de vida"),
     )
     titulo = forms.CharField(max_length=100)
+    subtitulo = forms.CharField(max_length=100)
     texto = forms.CharField(max_length=1000)
+    imagen_de_portada = forms.ImageField()
     articulo_nro = forms.IntegerField()
     username_autor = forms.ModelChoiceField(
         required=True, queryset=Autores.objects.all(), label="Username del Autor"

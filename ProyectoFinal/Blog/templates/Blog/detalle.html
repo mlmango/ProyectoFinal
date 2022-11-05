@@ -4,9 +4,11 @@
 
 <h3>Articulo</h3>  
 <p>Nombre del articulo: <strong> {{ articulos.titulo }} </strong> </p>
+<p>Subtítulo: {{articulos.subtitulo}}</p>
 <p> Autor: {{articulos.username_autor}}</p>
 <p> Fecha de Publicación: {{articulos.fecha_de_publicacion}}</p>
 <p><i> {{articulos.texto}}</i></p>
+<p><img src="{{ articulos.imagen_de_portada.url }}"/></p>
 
 <p>
     <a href="{% url 'Articulos' %}"> Todos los Artículos </a>

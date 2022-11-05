@@ -4,24 +4,29 @@
 
 <h3>Articulos del Blog</h3>
 
+{% if object_list %}
 
+    <ul>
+        {% for articulo in object_list %}
+        <li>
+            <p> Título: {{articulo.titulo}}</p>
+            <p> Subtítulo: {{articulo.subtitulo}}</p>
+            <p><img src="{{ articulos.imagen_de_portada.url }}"/></p>
+            <p> Autor: {{articulo.username_autor}}</p>
+            <p> Fecha de Publicación: {{articulo.fecha_de_publicacion}}</p>
+            <a href="{% url 'ArticuloDetail' articulo.id %}"> Leer más... </a>
+            <a href="{% url 'ArticuloUpdate' articulo.id %}"> Editar </a>
+            <a href="{% url 'ArticuloDelete' articulo.id %}"> Borrar </a>
 
-<ul>
-    {% for articulo in object_list %}
-    <li>
-        <p> Título: {{articulo.titulo}}</p>
-        <p> Autor: {{articulo.username_autor}}</p>
-        <p> Fecha de Publicación: {{articulo.fecha_de_publicacion}}</p>
-        <p> Categoría: {{articulo.sections}}</p>
-        <a href="{% url 'ArticuloDetail' articulo.id %}"> Leer más... </a>
-        <a href="{% url 'ArticuloUpdate' articulo.id %}"> Editar </a>
-        <a href="{% url 'ArticuloDelete' articulo.id %}"> Borrar </a>
-
-    </li>
+        </li>
     {% endfor %}
 
-</ul>
+    </ul>
+{% else %}
 
+No hay ningún artículo creado.
+
+{% endif %}
 
 {% endblock %}
 

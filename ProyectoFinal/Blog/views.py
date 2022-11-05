@@ -88,14 +88,16 @@ def procesar_formulario_articulo(request):
 
     if request.method == "POST":
 
-        mi_formulario = formulario_Articulos(request.POST)
+        mi_formulario = formulario_Articulos(request.POST, request.FILES)
         if mi_formulario.is_valid():
             datos_ingresados_por_usuario = mi_formulario.cleaned_data
             nuevo_modelo = Articulos(
                 titulo=datos_ingresados_por_usuario["titulo"],
+                subtitulo=datos_ingresados_por_usuario["subtitulo"],
                 texto=datos_ingresados_por_usuario["texto"],
                 articulo_nro=datos_ingresados_por_usuario["articulo_nro"],
                 username_autor=datos_ingresados_por_usuario["username_autor"],
+                imagen_de_portada=datos_ingresados_por_usuario["imagen_de_portada"],
                 fecha_de_publicacion=datos_ingresados_por_usuario[
                     "fecha_de_publicacion"
                 ],
@@ -103,8 +105,9 @@ def procesar_formulario_articulo(request):
             nuevo_modelo.save()
 
             mi_formulario = formulario_Articulos()
-            contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-articulo-2.html", context=contexto)
+            avatar = Avatar.objects.filter(user=request.user).first()
+            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            return render(request, "blog/formulario-articulo-2.html", contexto)
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-articulo.html", context=contexto)
@@ -164,9 +167,11 @@ class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
     success_url = "/blog/pages/"
     fields = [
         "titulo",
+        "subtitulo",
         "texto",
         "articulo_nro",
         "username_autor",
+        "imagen_de_portada",
         "fecha_de_publicacion",
     ]
 
