@@ -31,11 +31,13 @@ def busqueda_bd(request):
         return render(request, "blog/form-de-busqueda.html", contexto)
 
     if request.method == "POST":
-        # breakpoint()
         dato_ingresado = request.POST["titulo"]
         resultado_busqueda = Articulos.objects.filter(titulo__icontains=dato_ingresado)
         avatar = Avatar.objects.filter(user=request.user).first()
-        contexto = {"resultados": resultado_busqueda, "avatar": avatar.avatar.url}
+        if avatar is not None:
+            contexto = {"resultados": resultado_busqueda, "avatar": avatar.avatar.url}
+        else:
+            contexto = {"resultados": resultado_busqueda}
         return render(request, "blog/resultado-de-busqueda.html", contexto)
 
 
@@ -48,7 +50,7 @@ def mostrar_inicio(request):
         contexto = {}
 
     return render(request, "blog/inicio.html", contexto)
-    # return render(request, "blog/inicio.html")
+
 
 
 @login_required
@@ -56,7 +58,10 @@ def procesar_formulario_autor(request):
     if request.method == "GET":
         mi_formulario = formulario_Autores()
         avatar = Avatar.objects.filter(user=request.user).first()
-        contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+        if avatar is not None:
+            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+        else:
+            contexto = {"formulario": mi_formulario}
         return render(request, "blog/formulario-autor.html", contexto)
 
     if request.method == "POST":
@@ -73,8 +78,17 @@ def procesar_formulario_autor(request):
 
             mi_formulario = formulario_Autores()
             avatar = Avatar.objects.filter(user=request.user).first()
-            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            if avatar is not None:
+                contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            else:
+                contexto = {"formulario": mi_formulario}
             return render(request, "blog/formulario-autor-2.html", contexto)
+    
+    avatar = Avatar.objects.filter(user=request.user).first()
+    if avatar is not None:
+        contexto = {"avatar": avatar.avatar.url}
+    else:
+        contexto = {}
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-autor.html", context=contexto)
@@ -82,10 +96,15 @@ def procesar_formulario_autor(request):
 
 @login_required
 def procesar_formulario_articulo(request):
+
+
     if request.method == "GET":
         mi_formulario = formulario_Articulos()
         avatar = Avatar.objects.filter(user=request.user).first()
-        contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+        if avatar is not None:
+            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+        else:
+            contexto = {"formulario": mi_formulario}
         return render(request, "blog/formulario-articulo.html", contexto)
 
     if request.method == "POST":
@@ -108,39 +127,15 @@ def procesar_formulario_articulo(request):
 
             mi_formulario = formulario_Articulos()
             avatar = Avatar.objects.filter(user=request.user).first()
-            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            if avatar is not None:
+                contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            else:
+                contexto = {"formulario": mi_formulario}
             return render(request, "blog/formulario-articulo-2.html", contexto)
+
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-articulo.html", context=contexto)
-
-
-def procesar_formulario_seccion(request):
-    if request.method == "GET":
-        mi_formulario = formulario_Secciones()
-        contexto = {"formulario": mi_formulario}
-        return render(request, "blog/formulario-seccion.html", context=contexto)
-
-    if request.method == "POST":
-
-        mi_formulario = formulario_Secciones(request.POST)
-        if mi_formulario.is_valid():
-            datos_ingresados_por_usuario = mi_formulario.cleaned_data
-            nuevo_modelo = Secciones(
-                categoria=datos_ingresados_por_usuario["categoria"]
-            )
-            nuevo_modelo.save()
-
-            mi_formulario = formulario_Secciones()
-            contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-seccion-2.html", context=contexto)
-
-    contexto = {"formulario": mi_formulario}
-    return render(request, "blog/formulario-seccion.html", context=contexto)
-
-
-def mapa_del_sitio(request):
-    return render(request, "blog/map.html")
 
 
 class ArticulosList(LoginRequiredMixin, ListView):
@@ -191,9 +186,6 @@ class MyLogout(LoginRequiredMixin, LogoutView):
     template_name = "blog/logout.html"
 
 
-# @login_required
-# def mostrar_inicio(request):
-#     return render(request, "Blog/inicio.html")
 
 
 def register(request):
@@ -229,9 +221,15 @@ def editar_perfil(request):
             user.set_password(data["password1"])
             user.username = data["username"]
             user.save()
-            return render(request, "Blog/inicio.html", {"avatar": avatar.imagen.url})
-
-    contexto = {"user": user, "form": form, "avatar": avatar.avatar.url}
+            if avatar is not None:
+                return render(request, "Blog/inicio.html", {"avatar": avatar.imagen.url})
+            else:
+                return render(request, "Blog/inicio.html")
+    
+    if avatar is not None:
+        contexto = {"user": user, "form": form, "avatar": avatar.avatar.url}
+    else:
+        contexto = {"user": user, "form": form}
     return render(request, "Blog/editperfil.html", contexto)
 
 
