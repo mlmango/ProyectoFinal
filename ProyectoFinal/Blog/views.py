@@ -34,7 +34,8 @@ def busqueda_bd(request):
         # breakpoint()
         dato_ingresado = request.POST["titulo"]
         resultado_busqueda = Articulos.objects.filter(titulo__icontains=dato_ingresado)
-        contexto = {"resultados": resultado_busqueda}
+        avatar = Avatar.objects.filter(user=request.user).first()
+        contexto = {"resultados": resultado_busqueda, "avatar": avatar.avatar.url}
         return render(request, "blog/resultado-de-busqueda.html", contexto)
 
 
@@ -71,8 +72,9 @@ def procesar_formulario_autor(request):
             nuevo_modelo.save()
 
             mi_formulario = formulario_Autores()
-            contexto = {"formulario": mi_formulario}
-            return render(request, "blog/formulario-autor-2.html", context=contexto)
+            avatar = Avatar.objects.filter(user=request.user).first()
+            contexto = {"formulario": mi_formulario, "avatar": avatar.avatar.url}
+            return render(request, "blog/formulario-autor-2.html", contexto)
 
     contexto = {"formulario": mi_formulario}
     return render(request, "blog/formulario-autor.html", context=contexto)
