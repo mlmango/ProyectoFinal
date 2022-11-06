@@ -50,7 +50,7 @@ class UserEditionForm(UserCreationForm):
     password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
-    username = forms.CharField(label="Nombre de usuario")
+    #username = forms.CharField(label="Nombre de usuario")
 
     class Meta:
         model = User
@@ -60,7 +60,7 @@ class UserEditionForm(UserCreationForm):
             "password2",
             "first_name",
             "last_name",
-            "username",
+            #"username",
         ]
 
 

@@ -31,6 +31,7 @@ def busqueda_bd(request):
         return render(request, "blog/form-de-busqueda.html", contexto)
 
     if request.method == "POST":
+
         dato_ingresado = request.POST["titulo"]
         resultado_busqueda = Articulos.objects.filter(titulo__icontains=dato_ingresado)
         avatar = Avatar.objects.filter(user=request.user).first()
@@ -219,18 +220,20 @@ def editar_perfil(request):
             user.first_name = data["first_name"]
             user.last_name = data["last_name"]
             user.set_password(data["password1"])
-            user.username = data["username"]
+            #user.username = data["username"]
             user.save()
             if avatar is not None:
-                return render(request, "Blog/inicio.html", {"avatar": avatar.imagen.url})
+                contexto = {"mensajeEdicion": "Usuario editado, por favor ingrese nuevamente", "avatar": avatar.avatar.url}
             else:
-                return render(request, "Blog/inicio.html")
-    
+                contexto = {"mensajeEdicion": "Usuario editado, por favor ingrese nuevamente",}
+            return render(request, "Blog/inicio.html", contexto)
+
     if avatar is not None:
         contexto = {"user": user, "form": form, "avatar": avatar.avatar.url}
     else:
         contexto = {"user": user, "form": form}
     return render(request, "Blog/editperfil.html", contexto)
+
 
 
 @login_required
