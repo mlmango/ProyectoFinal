@@ -220,7 +220,6 @@ def editar_perfil(request):
             user.first_name = data["first_name"]
             user.last_name = data["last_name"]
             user.set_password(data["password1"])
-            #user.username = data["username"]
             user.save()
             if avatar is not None:
                 contexto = {"mensajeEdicion": "Usuario editado, por favor ingrese nuevamente", "avatar": avatar.avatar.url}

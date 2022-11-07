@@ -33,12 +33,6 @@ class formulario_Articulos(forms.Form):
     fecha_de_publicacion = forms.DateField()
 
 
-#    seccion=forms.ModelChoiceField(
-#        required=False,
-#        queryset=Secciones.objects.all(),
-#        label="Sección"
-#    )
-
 
 class formulario_Secciones(forms.Form):
     categoria = forms.CharField(max_length=100)
@@ -50,7 +44,6 @@ class UserEditionForm(UserCreationForm):
     password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
-    #username = forms.CharField(label="Nombre de usuario")
 
     class Meta:
         model = User
@@ -60,7 +53,6 @@ class UserEditionForm(UserCreationForm):
             "password2",
             "first_name",
             "last_name",
-            #"username",
         ]
 
 
