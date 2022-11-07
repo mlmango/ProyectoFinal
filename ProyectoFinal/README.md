@@ -1,11 +1,11 @@
-# ProyectoFinal
+# Proyecto Final
 
-* Para ir a la página de inicio colocar la url "/blog/inicio/" luego del localhost
+_Web estilo blog, con opciones de crear autor y artículos para el mismo, como así también la creación de usuarios (indispensable para poder acceder a todo el contenido)._
 
-* Para ir a la página del formulario para crear autores colocar la url "/blog/formulario-autor/" luego del localhost. Después, completar los campos y hacer click en "Guardar" para salvar los datos.
+## Autores
 
-* Para ir a la página del formulario para crear articulos colocar la url "/blog/formulario-articulo/" luego del localhost. Después, completar los campos y hacer click en "Guardar" para salvar los datos. Si no ponés una fecha valida arrojará error.
+* **Mariana Truelsegaard** - [mtruelse](https://github.com/mtruelse)
+* **María Lucila Mango** - [mlmango](https://github.com/mlmango)
 
-* Para ir a la pagina del formulario para crear secciones colocar la url "/blog/formulario-seccion/" luego del localhost. Después, completar los campos y hacer click en "Guardar" para salvar los datos.
+* Ambas trabajamos sobre los mismos archivos, ya sea en templates, forms, views y urls.
 
-* Para ir a la pagina del formulario de búsqueda colocar la url "/blog/busqueda-art/" luego del localhost. Después, colocar el título exacto y hacer click en "Buscar" te llevará a una segunda pantalla dónde arroja los resultados de la busqueda. Si no se coloca el dato exacto o se deja vacío, no traerá resultados.
