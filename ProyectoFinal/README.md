@@ -4,7 +4,7 @@
 * **Mariana Truelsegaard** - [mtruelse](https://github.com/mtruelse)
 * **María Lucila Mango** - [mlmango](https://github.com/mlmango)
 
-# Proyecto Final
+## Proyecto Final
 
 _Web estilo blog en python utilizando el framework Django, con opciones de crear autor y artículos para el mismo, como así también la creación de usuarios (indispensable para poder acceder a todo el contenido)._
 
