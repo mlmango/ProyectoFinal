@@ -26,5 +26,7 @@ _*Recordar solo un usuario registrado y logueado podrá navegar por la página._
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+_Los casos de prueba se diseñaron para ejecutarse desde el archivo tests.py - tal cual se observó en clase - y permiten verificar el correcto funcionamiento al crear según el objeto Artículos. Uno de las pruebas consiste en crear un Artículo, una de ellas implica crear varios, y otra crear uno sin el atributo 'fecha'. También se creó un test el cual permite crear un objecto según el formato de Autores.
+
+_Para correr los casos de prueba, es necesario hacer uso del comando <python manage.py test>._
 
