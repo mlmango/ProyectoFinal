@@ -30,3 +30,7 @@ _Los casos de prueba se diseñaron para ejecutarse desde el archivo tests.py - t
 
 _Para correr los casos de prueba, es necesario hacer uso del comando # python manage.py test #._
 
+## Video Tutorial del Sitio
+
+https://www.youtube.com/watch?v=7FXsWZrvxSU 
+
